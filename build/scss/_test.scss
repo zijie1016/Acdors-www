@@ -1,0 +1,18 @@
+.wrapper {
+  // border: 3px dashed yellow;
+  width: 100%;
+}
+
+.test {
+  width: 100%;
+  height: 500px;
+
+  $tvar: red;
+  $tvar: blue !default;
+  .item {
+    width: 50px;
+    height: 50px;
+    background-color: $tvar;
+  }
+
+}

@@ -1,0 +1,34 @@
+{
+  "name": "acdors-www",
+  "version": "1.0.0",
+  "description": "Source build of acdors home page.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all clean copy && npm-run-all --parallel sync watch",
+    "sync": "browser-sync start --server dist --files dist",
+    "pug": "node build/config/npm/pug.js",
+    "clean": "shx rm -rf dist/pages/ dist/js dist/css",
+    "copy": "npm-run-all copy:*",
+    "copy:favicon": "shx cp ./favicon.ico dist/", 
+    "copy:img": "shx cp -R build/img/ dist/",
+    "watch": "npm-run-all --parallel watch-pug watch-css",
+    "watch-pug": "nodemon --watch build/pug --ext pug --exec \"npm run pug\"",
+    "watch-css": "nodemon --watch build/scss -e scss -x \"npm run css\"",
+    "css": "npm-run-all --sequential css-compile",
+    "css-compile": "npm run css-compile-bash -- build/scss/acdors.scss dist/css/acdors.css",
+    "css-compile-bash": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js --output-style expanded --source-map true --source-map-contents true --precision 6"
+  },
+  "author": "yezijie <primdict@163.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "mkdirp": "^1.0.3",
+    "node-sass": "^4.13.1",
+    "node-sass-package-importer": "^5.3.2",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
+    "pug": "^2.0.4",
+    "rollup": "^2.1.0",
+    "shx": "^0.3.2"
+  }
+}
