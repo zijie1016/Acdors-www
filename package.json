@@ -27,7 +27,7 @@
     "node-sass-package-importer": "^5.3.2",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "rollup": "^2.1.0",
     "shx": "^0.3.2"
   }
